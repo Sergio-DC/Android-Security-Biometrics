@@ -78,3 +78,5 @@ Para poder activar el cuadro de dialogo de autenticación usaremos la siguiente 
 ```java
 biometricPrompt.authenticate(promptInfo);
 ```
+
+# Encryption
