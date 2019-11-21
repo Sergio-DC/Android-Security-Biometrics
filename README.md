@@ -78,3 +78,39 @@ Para poder activar el cuadro de dialogo de autenticación usaremos la siguiente 
 ```java
 biometricPrompt.authenticate(promptInfo);
 ```
+
+# Encryption
+
+1. Encriptar mensaje 
+```
+byte[] plaintext = ...;
+KeyGenerator keygen = KeyGenerator.getInstance("AES");
+keygen.init(256);
+SecretKey key = keygen.generateKey();
+Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
+cipher.init(Cipher.ENCRYPT_MODE, key);
+byte[] ciphertext = cipher.doFinal(plaintext);
+byte[] iv = cipher.getIV();
+```
+2. Desencriptar mensaje
+```
+byte[] plaintext = ...;
+KeyGenerator keygen = KeyGenerator.getInstance("AES");
+keygen.init(256);
+SecretKey key = keygen.generateKey();
+Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
+cipher.init(Cipher.DECRYPT_MODE, key);
+byte[] ciphertext = cipher.doFinal(plaintext);
+byte[] iv = cipher.getIV();
+```
+3. Generar llaves
+```
+MessageDigest sha = MessageDigest.getInstance("SHA-256");
+byte[] key = password.getBytes("UTF-8");
+key = sha.digest(key);
+SecretKeySpec secretKey = new SecretKeySpec(key, "AES");
+```
+# Tutorial
+
+https://www.youtube.com/watch?v=kN8hlHO8UZ1
+

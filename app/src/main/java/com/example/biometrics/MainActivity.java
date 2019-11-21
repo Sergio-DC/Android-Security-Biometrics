@@ -54,8 +54,6 @@ public class MainActivity extends AppCompatActivity {
                 super.onAuthenticationSucceeded(result);
                 Intent intent = new Intent(getApplicationContext(), SecurityActivity.class);
                 startActivity(intent);
-                //Toast.makeText(getApplicationContext(),"workingSuccess!",Toast.LENGTH_LONG).show();
-
                 //TODO: Called when a biometric is recognized.
                 Log.d("Hola","Datos reconocidos");
                 Toast.makeText(getApplicationContext(),"Datos reconocidos",Toast.LENGTH_LONG).show();
